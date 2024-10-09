@@ -60,7 +60,7 @@ Set up environment variables:
 
 ```bash
 cp .env.example .env
-php artisan key:generate
+docker-compose exec app php artisan key:generate
 ```
 
 Set up the database and run migrations:
@@ -82,7 +82,7 @@ docker-compose up --build
 Serve the application:
 
 ```bash
-docker-compose exec app php artisan serve
+docker-compose exec app php artisan serve --host=0.0.0.0 --port=80
 ```
 
 For frontend development, run the following command to start Vite or other frontend bundlers in development mode:

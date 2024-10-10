@@ -18,3 +18,5 @@ use App\Http\Controllers\ScreeningController;
 Route::get('', fn() => to_route('films.index'));
 
 Route::apiResource('films', FilmController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
+
+Route::apiResource('screenings', ScreeningController::class)->only(['index', 'show', 'store', 'update', 'destroy']);

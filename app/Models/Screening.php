@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Screening;
+use App\Models\Film;
 
-class Film extends Model
+class Screening extends Model
 {
     use HasFactory;
 
@@ -16,18 +16,16 @@ class Film extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'description',
-        'rating',
-        'language',
-        'cover_image',
+        'datetime',
+        'available_seats',
+        'film_id',
     ];
 
     /**
-     * Get the screenings for the film.
+     * Get the film that owns the screening.
      */
-    public function screenings()
+    public function film()
     {
-        return $this->hasMany(Screening::class);
+        return $this->belongsTo(Film::class);
     }
 }

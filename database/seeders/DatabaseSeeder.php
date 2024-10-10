@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             // Seed screenings table for each film
             DB::table('screenings')->insert([
                 'film_id' => $filmId,
-                'time' => $faker->dateTimeBetween('now', '+1 month')->format('Y-m-d H:i:s'),
+                'datetime' => $faker->dateTimeBetween('+1 days', '+2 weeks'),
                 'available_seats' => $faker->numberBetween(20, 100),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

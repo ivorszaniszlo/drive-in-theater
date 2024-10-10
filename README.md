@@ -92,6 +92,13 @@ To access the database, you can use Adminer by navigating to `http://localhost:8
 - **Password**: root
 - **Database**: laravel_10_drive_in_theater
 
+If you need to reset the database (for example, after changes to migrations), use the following command:
+
+```bash
+php artisan migrate:refresh --seed
+```
+
+This command will drop all tables, run all migrations again, and seed the database with initial data.
 
 ### Install PHP Debug Bar
 
@@ -162,6 +169,14 @@ docker-compose exec app php artisan test
 ```
 
 This command will execute the unit and feature tests defined for the application, ensuring that all functionality is working as expected. The tests cover the main features, such as listing films, showing details of a film, creating, updating, and deleting films.
+
+If you need to refresh the database before running tests, use the following command:
+
+```bash
+php artisan migrate:refresh --seed
+```
+
+This will ensure that the database is in a clean state before running the tests.
 
 ## Status
 

@@ -12,6 +12,7 @@
   - [Database Setup](#database-setup)
 - [Running](#running)
   - [Database Running](#database-running)
+- [Testing](#testing)
 - [Status](#status)
 - [Created](#created)
 
@@ -37,6 +38,7 @@ The Drive-in Theater app allows users to view available movies, schedule screeni
 - Docker
 - Adminer (Database management)
 - PHP Debug Bar
+- PHPUnit
 
 ## Setup
 
@@ -78,7 +80,8 @@ docker-compose exec app php artisan key:generate
 Set up the database and run migrations:
 
 ```bash
-$1```
+docker-compose exec app php artisan migrate --seed
+```
 
 To access the database management interface, navigate to `http://localhost:8081`.
 
@@ -149,6 +152,16 @@ docker-compose exec mysql mysql -u root -p
 ```
 
 Use the password `root` when prompted.
+
+## Testing
+
+To run the tests, use the following command:
+
+```bash
+docker-compose exec app php artisan test
+```
+
+This command will execute the unit and feature tests defined for the application, ensuring that all functionality is working as expected. The tests cover the main features, such as listing films, showing details of a film, creating, updating, and deleting films.
 
 ## Status
 

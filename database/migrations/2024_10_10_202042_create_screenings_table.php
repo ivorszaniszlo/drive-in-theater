@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('screenings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('film_id')->constrained('films')->onDelete('cascade');
-            $table->dateTime('time');
+            $table->foreignId('film_id')->constrained()->onDelete('cascade');
+            $table->dateTime('datetime');
             $table->integer('available_seats');
             $table->timestamps();
         });

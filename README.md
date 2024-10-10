@@ -1,4 +1,3 @@
-
 # Drive-in Theater App
 
 ## Table of Contents
@@ -79,16 +78,16 @@ docker-compose exec app php artisan key:generate
 Set up the database and run migrations:
 
 ```bash
-docker-compose exec app php artisan migrate --seed
-```
+$1```
+
+To access the database management interface, navigate to `http://localhost:8081`.
 
 To access the database, you can use Adminer by navigating to `http://localhost:8081`. Use the following credentials:
 - **System**: MySQL
-- **Server**: mysql
+- **Server**: 127.0.0.1
 - **Username**: root
 - **Password**: root
 - **Database**: laravel_10_drive_in_theater
-
 
 
 ### Install PHP Debug Bar
@@ -148,6 +147,8 @@ To ensure the database is running correctly, use the following command to connec
 ```bash
 docker-compose exec mysql mysql -u root -p
 ```
+
+Use the password `root` when prompted.
 
 ## Status
 

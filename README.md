@@ -10,6 +10,7 @@
   - [Frontend Setup](#frontend-setup)
   - [Docker Setup](#docker-setup)
   - [Database Setup](#database-setup)
+  - [Swagger Setup](#swagger-setup)
 - [Running](#running)
   - [Database Running](#database-running)
 - [Testing](#testing)
@@ -39,6 +40,7 @@ The Drive-in Theater app allows users to view available movies, schedule screeni
 - Adminer (Database management)
 - PHP Debug Bar
 - PHPUnit
+- Swagger/OpenAPI
 
 ## Setup
 
@@ -121,6 +123,30 @@ Build and run the Docker containers:
 ```bash
 docker-compose up --build
 ```
+
+### Swagger Setup
+
+To set up Swagger for API documentation, follow these steps:
+
+1. Install the Swagger package (already installed in this setup):
+   
+   ```bash
+   docker-compose exec app composer require "darkaonline/l5-swagger"
+   ```
+
+2. Publish the Swagger configuration:
+   
+   ```bash
+   docker-compose exec app php artisan vendor:publish --provider="L5Swagger\L5SwaggerServiceProvider"
+   ```
+
+3. Generate the Swagger documentation:
+   
+   ```bash
+   docker-compose exec app php artisan l5-swagger:generate
+   ```
+
+   You can access the Swagger UI for API documentation at `http://localhost:8000/api/documentation`.
 
 ## Running
 

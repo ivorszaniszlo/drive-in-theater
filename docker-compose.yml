@@ -16,6 +16,7 @@ services:
       DB_DATABASE: laravel_10_drive_in_theater
       DB_USERNAME: root
       DB_PASSWORD: root
+      L5_SWAGGER_GENERATE_ALWAYS: true
 
   frontend:
     build:

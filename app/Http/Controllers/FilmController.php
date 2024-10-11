@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Film;
+use OpenApi\Annotations as OA;
 // use Illuminate\Http\Request;
 
-/**
- * @OA\Info(
- *     title="Drive-in Theater API",
- *     version="1.0.0"
- * )
- */
 class FilmController extends Controller
 {
     /**
      * @OA\Get(
      *     path="/api/films",
+     *     operationId="getFilmsList",
+     *     tags={"Films"},
      *     summary="List all films",
+     *     description="Returns a list of all films in the database",
      *     @OA\Response(
      *         response=200,
-     *         description="A list of films"
+     *         description="A list of films",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Film"))
      *     )
      * )
      */
@@ -31,8 +30,11 @@ class FilmController extends Controller
 
     /**
      * @OA\Get(
-     *     path="/api/films/{id}",
+     *     path="/films/{id}",
+     *     operationId="getFilmById",
+     *     tags={"Films"},
      *     summary="Get a specific film",
+     *     description="Returns a specific film by its ID",
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
@@ -42,7 +44,8 @@ class FilmController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Film details"
+     *         description="Film details",
+     *         @OA\JsonContent(ref="#/components/schemas/Film")
      *     ),
      *     @OA\Response(
      *         response=404,

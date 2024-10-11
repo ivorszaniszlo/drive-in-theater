@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Screening;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -22,7 +23,7 @@ use App\Models\Screening;
  *         type="string",
  *         description="The title of the film"
  *     ),
- *     @OA\Property(
+ *     @OA\Property(    
  *         property="description",
  *         type="string",
  *         description="The description of the film"
@@ -55,31 +56,9 @@ class Film extends Model
     use HasFactory;
 
     /**
-     * @OA\Property(
-     *     property="title",
-     *     type="string",
-     *     description="The title of the film"
-     * )
-     * @OA\Property(
-     *     property="description",
-     *     type="string",
-     *     description="The description of the film"
-     * )
-     * @OA\Property(
-     *     property="rating",
-     *     type="string",
-     *     description="The rating of the film"
-     * )
-     * @OA\Property(
-     *     property="language",
-     *     type="string",
-     *     description="The language of the film"
-     * )
-     * @OA\Property(
-     *     property="cover_image",
-     *     type="string",
-     *     description="The cover image of the film"
-     * )
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
         'title',
@@ -90,12 +69,9 @@ class Film extends Model
     ];
 
     /**
-     * @OA\Property(
-     *     property="screenings",
-     *     description="List of screenings for the film",
-     *     type="array",
-     *     @OA\Items(ref="#/components/schemas/Screening")
-     * )
+     * Get the screenings for the film.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function screenings()
     {

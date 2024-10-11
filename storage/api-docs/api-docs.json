@@ -1,0 +1,224 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Drive-in Theater API",
+        "description": "API Documentation for the Drive-in Theater",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api",
+            "description": "Drive-in Theater API Server"
+        }
+    ],
+    "paths": {
+        "/api/films": {
+            "get": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "List all films",
+                "description": "Returns a list of all films in the database",
+                "operationId": "getFilmsList",
+                "responses": {
+                    "200": {
+                        "description": "A list of films",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Film"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/films/{id}": {
+            "get": {
+                "tags": [
+                    "Films"
+                ],
+                "summary": "Get a specific film",
+                "description": "Returns a specific film by its ID",
+                "operationId": "getFilmById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the film",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Film details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Film"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Film not found"
+                    }
+                }
+            }
+        },
+        "/api/screenings": {
+            "get": {
+                "tags": [
+                    "Screenings"
+                ],
+                "summary": "Get list of screenings",
+                "description": "List all screenings",
+                "operationId": "getScreeningsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Screening"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/screenings/{id}": {
+            "get": {
+                "tags": [
+                    "Screenings"
+                ],
+                "summary": "Get a specific screening",
+                "description": "Get a specific screening",
+                "operationId": "getScreeningById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Screening"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Screening not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Film": {
+                "title": "Film",
+                "description": "A model representing a film",
+                "properties": {
+                    "id": {
+                        "description": "The ID of the film",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "The title of the film",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the film",
+                        "type": "string"
+                    },
+                    "rating": {
+                        "description": "The rating of the film",
+                        "type": "string"
+                    },
+                    "language": {
+                        "description": "The language of the film",
+                        "type": "string"
+                    },
+                    "cover_image": {
+                        "description": "The cover image of the film",
+                        "type": "string"
+                    },
+                    "screenings": {
+                        "description": "List of screenings for the film",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Screening"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Screening": {
+                "title": "Screening",
+                "description": "A model representing a screening",
+                "properties": {
+                    "id": {
+                        "description": "The ID of the screening",
+                        "type": "integer"
+                    },
+                    "datetime": {
+                        "description": "The datetime of the screening",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "available_seats": {
+                        "description": "The number of available seats for the screening",
+                        "type": "integer"
+                    },
+                    "film_id": {
+                        "description": "The ID of the film associated with the screening",
+                        "type": "integer"
+                    },
+                    "film": {
+                        "$ref": "#/components/schemas/Film"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Films",
+            "description": "Films"
+        },
+        {
+            "name": "Screenings",
+            "description": "Screenings"
+        }
+    ]
+}

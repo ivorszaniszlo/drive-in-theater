@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Film;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -45,22 +46,9 @@ class Screening extends Model
     use HasFactory;
 
     /**
-     * @OA\Property(
-     *     property="datetime",
-     *     type="string",
-     *     format="date-time",
-     *     description="The datetime of the screening"
-     * )
-     * @OA\Property(
-     *     property="available_seats",
-     *     type="integer",
-     *     description="The number of available seats for the screening"
-     * )
-     * @OA\Property(
-     *     property="film_id",
-     *     type="integer",
-     *     description="The ID of the film associated with the screening"
-     * )
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
     protected $fillable = [
         'datetime',
@@ -71,11 +59,7 @@ class Screening extends Model
     /**
      * Get the film that owns the screening.
      *
-     * @OA\Property(
-     *     property="film",
-     *     ref="#/components/schemas/Film",
-     *     description="The film associated with the screening"
-     * )
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function film()
     {

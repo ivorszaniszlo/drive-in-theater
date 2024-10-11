@@ -33,9 +33,9 @@ The Drive-in Theater app allows users to view available movies, schedule screeni
 
 - Laravel 10
 - PHP 8
-- ReactJS
+- ReactJS (with Vite, Axios and React Router)
 - MySQL
-- Tailwind CSS (with Node.js and Vite)
+- Tailwind CSS
 - Docker
 - Adminer (Database management)
 - PHP Debug Bar
@@ -66,6 +66,12 @@ Navigate to the frontend directory and install dependencies:
 ```bash
 cd frontend
 npm install
+```
+
+Install Axios for API calls and React Router for navigation:
+
+```bash
+npm install axios react-router-dom
 ```
 
 ### Environment Setup
@@ -146,7 +152,7 @@ To set up Swagger for API documentation, follow these steps:
    docker-compose exec app php artisan l5-swagger:generate
    ```
 
-   You can access the Swagger UI for API documentation at `http://localhost:8000/api/documentation`.
+   You can access the Swagger UI for API documentation at `http://localhost:8000/docs`.
 
 ## Running
 

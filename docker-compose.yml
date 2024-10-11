@@ -5,6 +5,7 @@ services:
     container_name: app
     ports:
       - 8000:80
+      - 5173:3000
     volumes:
       - .:/var/www/html
     depends_on:
@@ -17,19 +18,7 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: root
       L5_SWAGGER_GENERATE_ALWAYS: true
-
-  frontend:
-    build:
-      context: ./frontend
-    container_name: frontend
-    ports:
-      - 3000:3000
-    working_dir: /var/www/frontend
-    command: sh -c "npm install && npm run dev"
-    volumes:
-      - ./frontend:/var/www/frontend
-    depends_on:
-      - app
+    command: sh -c "composer install && npm install && npm run dev -- --host"
 
   mysql:
     image: mariadb:10.8.3
@@ -46,4 +35,3 @@ services:
     restart: always
     ports:
       - 8081:8080
-      

@@ -33,7 +33,7 @@ The Drive-in Theater app allows users to view available movies, schedule screeni
 
 - Laravel 10
 - PHP 8
-- ReactJS (with Vite, Axios and React Router)
+- ReactJS (with Vite and React Router)
 - MySQL
 - Tailwind CSS
 - Docker

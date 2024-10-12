@@ -120,12 +120,12 @@ To access the database management interface, navigate to `http://localhost:8081`
 
 To access the database, you can use Adminer by navigating to `http://localhost:8081`. Use the following credentials:
 - **System**: MySQL
-- **Server**: 127.0.0.1
+- **Server**: mysql
 - **Username**: root
 - **Password**: root
 - **Database**: laravel_10_drive_in_theater
 
-If you need to reset the database (for example, after changes to migrations), use the following command:
+If you need to reset the database (for example, after changes to migrations) use the following command:
 
 ```bash
 php artisan migrate:refresh --seed
@@ -177,7 +177,7 @@ To set up Swagger for API documentation, follow these steps:
    docker-compose exec app php artisan l5-swagger:generate
    ```
 
-   You can access the Swagger UI for API documentation at `http://localhost:8000/docs`.
+   You can access the Swagger UI for API documentation at `http://localhost:8000/docs/api`.
 
 ## Running
 
@@ -197,15 +197,13 @@ Serve the React frontend application:
 docker-compose exec app npm start --prefix frontend
 ```
 
-Access the backend at `http://localhost:8000` and the frontend at `http://localhost:3000`.
+Access the backend at `http://localhost:8000` and the frontend at `http://localhost:5173`.
 
 For frontend development, start the Vite development server by running:
 
 ```bash
 docker-compose exec app npm run dev --prefix frontend
 ```
-
-Access the application at `http://localhost:8000`.
 
 ### Database Running
 

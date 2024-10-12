@@ -33,9 +33,9 @@ The Drive-in Theater app allows users to view available movies, schedule screeni
 
 - Laravel 10
 - PHP 8
-- ReactJS (with Vite and React Router)
 - MySQL
-- Tailwind CSS
+- ReactJS (with Vite and React Router)
+- Tailwind CSS with Material UI
 - Docker
 - Adminer (Database management)
 - PHP Debug Bar
@@ -68,10 +68,35 @@ cd frontend
 npm install
 ```
 
-Install Axios for API calls and React Router for navigation:
+Install Tailwind CSS and Material UI for styling:
 
 ```bash
-npm install axios react-router-dom
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+Update tailwind.config.js to include content paths:
+
+```javascript
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Add Tailwind CSS imports to src/index.css:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
 ### Environment Setup

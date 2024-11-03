@@ -14,6 +14,7 @@
 - [Running](#running)
   - [Database Running](#database-running)
 - [Testing](#testing)
+- [Code Quality Analysis](#code-quality-analysis)
 - [Status](#status)
 - [Created](#created)
 
@@ -232,6 +233,20 @@ php artisan migrate:refresh --seed
 ```
 
 This will ensure that the database is in a clean state before running the tests.
+
+## Code Quality Analysis
+
+To maintain high code quality, Larastan and PHPInsights are used for static analysis of the Laravel codebase. These tools help identify potential bugs, improve performance, and enforce coding standards.
+
+Run Larastan analysis with the following command:
+
+```bash
+docker-compose exec app vendor/bin/phpstan analyse
+```
+
+The output of the Larastan analysis can be found below:
+
+![Drive-in Theater Analysis](./public/img/drive-in-theater-analysis.jpg)
 
 ## Status
 
